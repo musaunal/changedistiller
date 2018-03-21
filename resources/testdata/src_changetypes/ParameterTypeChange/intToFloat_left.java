@@ -1,10 +1,9 @@
 import java.util.*;
 
 /**
-* when we change int to long, float ,double .. or any other number based types not working
-* it says "AdditionalFunctionality" not a ParameterTypeChange
-*
+* case : "change int to boolean , int to float and book to double"
 */
+
 public class Parameter_Type_Change_Left{
   Book book1;
 
@@ -12,11 +11,11 @@ public class Parameter_Type_Change_Left{
 
   }
 
-  public void foo(int a, String b){
+  public void foo(int a, int b){
 
   }
 
-  public void setBook(int book){
+  public void setBook(Book book){
     book1 = book;
   }
 

@@ -29,45 +29,32 @@ import org.junit.Test;
 
 import ch.uzh.ifi.seal.changedistiller.model.entities.SourceCodeChange;
 
-public class ParameterTypeChangeTest {
+public class DocUpdateTest {
 	List<SourceCodeChange> sourceCodeChangeList;
 
 	@Before
 	public void setUp() {
-		sourceCodeChangeList = FileDistillerUtil.getChangesFromFile("ParameterTypeChange/intToString_left.java", "ParameterTypeChange/intToString_right.java");
+		sourceCodeChangeList = FileDistillerUtil.getChangesFromFile("DocUpdateResources/DocUpdate_left.java", "DocUpdateResources/DocUpdate_right.java");
 	}
 
 	@Test
-	public void intToStringTest() {
-		String expected = "PARAMETER_TYPE_CHANGE\nPARAMETER_TYPE_CHANGE\n";
+	public void DocUpdateWithOtherChangesTest() {
+		String expected = "DOC_UPDATE\nMETHOD_RENAMING\n";
 
 		StringBuilder stringBuilder = new StringBuilder();
 		for(SourceCodeChange change : sourceCodeChangeList) {
 			stringBuilder.append(change.getLabel() + "\n");
-  	}
+    }
 
 		assertEquals(stringBuilder.toString(), expected);
 	}
 
-	@Test
-	public void intToObjectTest() {
-		String expected = "PARAMETER_TYPE_CHANGE\n";
+  @Test
+	public void SolelyDocUpdateTest() {
+		String expected = "DOC_UPDATE\n";
 
 		StringBuilder stringBuilder = new StringBuilder();
-		sourceCodeChangeList = FileDistillerUtil.getChangesFromFile("ParameterTypeChange/intToObject_left.java", "ParameterTypeChange/intToObject_right.java");
-		for(SourceCodeChange change : sourceCodeChangeList) {
-			stringBuilder.append(change.getLabel() + "\n");
-  	}
-
-		assertEquals(stringBuilder.toString(), expected);
-	}
-
-	@Test
-	public void intToFloatingPointNumberAndBooleanTest() {
-		String expected = "PARAMETER_TYPE_CHANGE\nPARAMETER_TYPE_CHANGE\n";
-
-		sourceCodeChangeList = FileDistillerUtil.getChangesFromFile("ParameterTypeChange/intToFloat_left.java", "ParameterTypeChange/intToFloat_right.java");
-		StringBuilder stringBuilder = new StringBuilder();
+    sourceCodeChangeList = FileDistillerUtil.getChangesFromFile("DocUpdateResources/DocUpdate1_left.java", "DocUpdateResources/DocUpdate1_right.java");
 		for(SourceCodeChange change : sourceCodeChangeList) {
 			stringBuilder.append(change.getLabel() + "\n");
   	}
