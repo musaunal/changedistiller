@@ -31,10 +31,12 @@ import ch.uzh.ifi.seal.changedistiller.model.entities.SourceCodeChange;
 
 public class DocUpdateTest {
 	List<SourceCodeChange> sourceCodeChangeList;
+	List<SourceCodeChange> sourceCodeChangeList2;
 
 	@Before
 	public void setUp() {
 		sourceCodeChangeList = FileDistillerUtil.getChangesFromFile("DocUpdateResources/DocUpdate_left.java", "DocUpdateResources/DocUpdate_right.java");
+		sourceCodeChangeList2 = FileDistillerUtil.getChangesFromFile("DocUpdateResources/DocUpdate1_left.java", "DocUpdateResources/DocUpdate1_right.java");
 	}
 
 	@Test
@@ -54,8 +56,7 @@ public class DocUpdateTest {
 		String expected = "DOC_UPDATE\n";
 
 		StringBuilder stringBuilder = new StringBuilder();
-    sourceCodeChangeList = FileDistillerUtil.getChangesFromFile("DocUpdateResources/DocUpdate1_left.java", "DocUpdateResources/DocUpdate1_right.java");
-		for(SourceCodeChange change : sourceCodeChangeList) {
+    for(SourceCodeChange change : sourceCodeChangeList2) {
 			stringBuilder.append(change.getLabel() + "\n");
   	}
 

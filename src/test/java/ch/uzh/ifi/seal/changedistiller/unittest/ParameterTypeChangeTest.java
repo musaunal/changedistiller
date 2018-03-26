@@ -31,10 +31,14 @@ import ch.uzh.ifi.seal.changedistiller.model.entities.SourceCodeChange;
 
 public class ParameterTypeChangeTest {
 	List<SourceCodeChange> sourceCodeChangeList;
+	List<SourceCodeChange> sourceCodeChangeList2;
+	List<SourceCodeChange> sourceCodeChangeList3;
 
 	@Before
 	public void setUp() {
 		sourceCodeChangeList = FileDistillerUtil.getChangesFromFile("ParameterTypeChange/intToString_left.java", "ParameterTypeChange/intToString_right.java");
+		sourceCodeChangeList2 = FileDistillerUtil.getChangesFromFile("ParameterTypeChange/intToObject_left.java", "ParameterTypeChange/intToObject_right.java");
+		sourceCodeChangeList3 = FileDistillerUtil.getChangesFromFile("ParameterTypeChange/intToFloat_left.java", "ParameterTypeChange/intToFloat_right.java");
 	}
 
 	@Test
@@ -54,8 +58,7 @@ public class ParameterTypeChangeTest {
 		String expected = "PARAMETER_TYPE_CHANGE\n";
 
 		StringBuilder stringBuilder = new StringBuilder();
-		sourceCodeChangeList = FileDistillerUtil.getChangesFromFile("ParameterTypeChange/intToObject_left.java", "ParameterTypeChange/intToObject_right.java");
-		for(SourceCodeChange change : sourceCodeChangeList) {
+		for(SourceCodeChange change : sourceCodeChangeList2) {
 			stringBuilder.append(change.getLabel() + "\n");
   	}
 
@@ -66,9 +69,8 @@ public class ParameterTypeChangeTest {
 	public void intToFloatingPointNumberAndBooleanTest() {
 		String expected = "PARAMETER_TYPE_CHANGE\nPARAMETER_TYPE_CHANGE\n";
 
-		sourceCodeChangeList = FileDistillerUtil.getChangesFromFile("ParameterTypeChange/intToFloat_left.java", "ParameterTypeChange/intToFloat_right.java");
 		StringBuilder stringBuilder = new StringBuilder();
-		for(SourceCodeChange change : sourceCodeChangeList) {
+		for(SourceCodeChange change : sourceCodeChangeList3) {
 			stringBuilder.append(change.getLabel() + "\n");
   	}
 
